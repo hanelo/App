@@ -1,65 +1,57 @@
-
 from flask import Flask, render_template, request
+import os
 
-# Tell Flask where to find the templates and static files (they're one level up)
-app = Flask(__name__, template_folder="../templates", static_folder="../static")
+app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
-@app.route("/")
+@app.route('/')
 def index():
     return render_template("interface.html")
 
-@app.route("/simulate", methods=["POST"])
+@app.route('/simulate', methods=['POST'])
 def simulate():
     try:
         num_passengers = int(request.form['passengers'])
         processing_time_per_passenger = float(request.form['processing_time'])
         num_resources = int(request.form['num_resources'])
+        chosen_position = int(request.form['chosen_position'])
 
         if num_passengers <= 0 or processing_time_per_passenger <= 0 or num_resources <= 0:
-            return render_template("interface.html", error="Veuillez saisir des valeurs valides pour les paramètres.")
+            return render_template("interface.html", error="Veuillez saisir des valeurs valides.")
 
-        processing_time = processing_time_per_passenger
+        time_per_resource = processing_time_per_passenger / num_resources
         waiting_time = 0
+        processing_time = processing_time_per_passenger
         total_time = waiting_time + processing_time
-
         first_passenger_processing_time = processing_time_per_passenger
 
-        chosen_position = int(request.form['chosen_position'])
         chosen_position_waiting_time = 0 if chosen_position == 1 else (processing_time_per_passenger / num_passengers) * (chosen_position - 1)
         chosen_position_total_time = chosen_position_waiting_time + processing_time_per_passenger
 
         total_time_last_passenger = (num_passengers * processing_time) / num_resources
         last_passenger_waiting_time = total_time_last_passenger - processing_time
-
         passenger_middle_waiting_time = last_passenger_waiting_time / 2
         total_time_middle_passenger = passenger_middle_waiting_time + processing_time
-
         passenger_chosenposition_waiting_time = (processing_time_per_passenger / num_resources) * (chosen_position - 1)
         passenger_chosenposition_total_time = passenger_chosenposition_waiting_time + processing_time
-
         capacity = (num_resources * 60) / processing_time
 
         return render_template("Result.html", results=True,
-            waiting_time=waiting_time,
-            processing_time=processing_time,
-            total_time=total_time,
-            first_passenger_processing_time=first_passenger_processing_time,
-            chosen_position_waiting_time=chosen_position_waiting_time,
-            chosen_position_processing_time=processing_time,
-            chosen_position_total_time=chosen_position_total_time,
-            last_passenger_waiting_time=last_passenger_waiting_time,
-            total_time_last_passenger=total_time_last_passenger,
-            passenger_middle_waiting_time=passenger_middle_waiting_time,
-            total_time_middle_passenger=total_time_middle_passenger,
-            passenger_chosenposition_waiting_time=passenger_chosenposition_waiting_time,
-            passenger_chosenposition_total_time=passenger_chosenposition_total_time,
-            capacity=capacity
-        )
+                               waiting_time=waiting_time,
+                               processing_time=processing_time,
+                               total_time=total_time,
+                               first_passenger_processing_time=first_passenger_processing_time,
+                               chosen_position_waiting_time=chosen_position_waiting_time,
+                               chosen_position_processing_time=processing_time_per_passenger,
+                               chosen_position_total_time=chosen_position_total_time,
+                               last_passenger_waiting_time=last_passenger_waiting_time,
+                               total_time_last_passenger=total_time_last_passenger,
+                               passenger_middle_waiting_time=passenger_middle_waiting_time,
+                               total_time_middle_passenger=total_time_middle_passenger,
+                               passenger_chosenposition_waiting_time=passenger_chosenposition_waiting_time,
+                               passenger_chosenposition_total_time=passenger_chosenposition_total_time,
+                               capacity=capacity)
+    except Exception as e:
+        return render_template("interface.html", error="Erreur serveur : " + str(e))
 
-    except ValueError:
-        return render_template("interface.html", error="Veuillez saisir des valeurs numériques valides pour les paramètres.")
-
-# This is required for Vercel to run the app
 def handler(environ, start_response):
     return app(environ, start_response)
-
