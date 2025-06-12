@@ -1,0 +1,152 @@
+/* Reset and base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Logo */
+.logoonda {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+    display: block;
+    max-width: 190px;
+    height: auto;
+}
+
+/* Container for the simulation result page */
+.container-form,
+.tableau-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Form Styles */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background: #ecf0f3;
+}
+
+h1 {
+    text-align: center;
+    background-color: #00588b;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    background: #ecf0f3;
+    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+button {
+    background-color: #00588b;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 900;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #00436b;
+}
+
+/* Error Message */
+.error {
+    color: red;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Result Page Styles */
+.result-container {
+    display: inline-block;
+    margin: 20px auto;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.result-container h2 {
+    margin-bottom: 15px;
+    background-color: #1D6295;
+    color: white;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+}
+
+.result-container p {
+    margin: 10px 0;
+    text-align: left;
+}
+
+.result-label {
+    font-weight: bold;
+}
+
+/* Table Styles (if used on results page) */
+table {
+    border-collapse: collapse;
+    width: 50%;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #140a2c;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #e1e1e1;
+}
+
+/* Utility container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
