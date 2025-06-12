@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Résultats de la simulation</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    body {
+      background-image: url("/oujdairpot.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: 'Calibri', 'Arial', sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logoonda {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 9999;
+      max-width: 160px;
+      height: auto;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .capacite-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 25vh;
+    }
+
+    .result-container,
+    .result-container-capacite {
+      background: #ecf0f3;
+      border: 2px solid #1D6295;
+      border-radius: 10px;
+      box-sizing: border-box;
+      margin: 10px;
+      overflow: hidden;
+    }
+
+    .result-container {
+      display: inline-block;
+      width: 10.7cm;
+      height: 6.02cm;
+    }
+
+    .result-container-capacite {
+      display: inline-block;
+      width: 5.57cm;
+      height: 3.01cm;
+    }
+
+    .result-title,
+    .result-title-capacite {
+      background: #1D6295;
+      color: white;
+      padding: 10px;
+      margin: 0;
+    }
+
+    .result-title-capacite {
+      border-radius: 5px 5px 0 0;
+    }
+
+    .result-title {
+      border-radius: 10px 10px 0 0;
+    }
+
+    .result-item,
+    .result-item-capacite {
+      padding: 10px;
+      text-align: left;
+    }
+
+    .result-item-capacite {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50%;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .result-label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="/logo-onda.png" alt="logo" class="logoonda">
+  <h1 class="page-title">Résultats de simulation</h1>
+
+  <div class="capacite-container">
+    <div class="result-container-capacite">
+      <h2 class="result-title-capacite">Capacité</h2>
+      <div class="result-item-capacite">
+        <%= capacity.toFixed(2) %> passagers/heure
+      </div>
+    </div>
+  </div>
+
+  <div class="result-container">
+    <h2 class="result-title">Premier Passager PAF</h2>
+    <div class="result-item">Temps d'attente : <%= waiting_time.toFixed(2) %> min</div>
+    <div class="result-item">Temps de traitement : <%= processing_time.toFixed(2) %> min</div>
+    <div class="result-item">Temps total : <%= total_time.toFixed(2) %> min</div>
+  </div>
+
+  <div class="result-container">
+    <h2 class="result-title">Durée Moyenne PAF</h2>
+    <div class="result-item">Temps moyen d'attente : <%= passenger_middle_waiting_time.toFixed(2) %> min</div>
+    <div class="result-item">Temps moyen de traitement : <%= processing_time.toFixed(2) %> min</div>
+    <div class="result-item">Temps moyen total : <%= total_time_middle_passenger.toFixed(2) %> min</div>
+  </div>
+
+  <div class="result-container">
+    <h2 class="result-title">Dernier Passager PAF</h2>
+    <div class="result-item">Temps d'attente : <%= last_passenger_waiting_time.toFixed(2) %> min</div>
+    <div class="result-item">Temps de traitement : <%= processing_time.toFixed(2) %> min</div>
+    <div class="result-item">Temps total : <%= total_time_last_passenger.toFixed(2) %> min</div>
+  </div>
+
+  <div class="result-container">
+    <h2 class="result-title">Position choisie PAF</h2>
+    <div class="result-item">Temps d'attente : <%= passenger_chosenposition_waiting_time.toFixed(2) %> min</div>
+    <div class="result-item">Temps de traitement : <%= processing_time.toFixed(2) %> min</div>
+    <div class="result-item">Temps total : <%= passenger_chosenposition_total_time.toFixed(2) %> min</div>
+  </div>
+
+</body>
+</html>
