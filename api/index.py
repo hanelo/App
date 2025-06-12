@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request
 import os
 
-app = Flask(__name__, static_folder='../static', template_folder='../templates')
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 @app.route('/')
 def index():
-    return render_template("interface.html")
+    return render_template('interface.html')
 
 @app.route('/simulate', methods=['POST'])
 def simulate():
@@ -35,7 +35,7 @@ def simulate():
         passenger_chosenposition_total_time = passenger_chosenposition_waiting_time + processing_time
         capacity = (num_resources * 60) / processing_time
 
-        return render_template("Result.html", results=True,
+        return render_template("Result.html",
                                waiting_time=waiting_time,
                                processing_time=processing_time,
                                total_time=total_time,
@@ -53,5 +53,6 @@ def simulate():
     except Exception as e:
         return render_template("interface.html", error="Erreur serveur : " + str(e))
 
+# For Vercel serverless
 def handler(environ, start_response):
     return app(environ, start_response)
