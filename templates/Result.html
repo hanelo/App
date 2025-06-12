@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de la simulation</title>
+    <style>
+        body {
+            background-image : url("/static/oujdairpot.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            font: 400 14px 'Calibri', 'Arial';
+            padding: 20px;
+            text-align: center;
+        }
+        .page-title {
+           text-align: center;
+            margin-top: 0;
+          }
+       .capacite-container {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+        height: 25vh;
+}
+
+      .capacite-rectangular {
+         width: 2cm;
+         height: 1cm;
+         font-size: 12px;
+         background: #ecf0f3;
+         border-radius: 10px;
+         border: 2px solid #1D6295;
+         box-sizing: border-box;
+         margin-bottom: 20px;
+}
+
+
+
+        .logoonda {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 9999;
+            display: block;
+            max-width: 200px;
+            height: auto;
+        }
+
+
+
+        .result-container {
+            display: inline-block;
+            margin-right: 20px;
+            background: #ecf0f3;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 10.7cm;
+            height: 6.02cm;
+            border: 2px solid #1D6295;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+.result-container-capacite {
+  display: inline-block;
+  margin-right: 5px;
+  background: #ecf0f3;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 5.57cm;
+  height: 3.01cm;
+  border: 2px solid #1D6295;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+ .result-title-capacite {
+            background: #1D6295;
+            color: white;
+            border-radius: 5px 5px 0 0;
+            padding: 5px;
+            margin: 0;
+            width: 5.57cm;
+        }
+
+        .result-title {
+            background: #1D6295;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            padding: 10px;
+            margin: 0;
+            width: 10.7cm;
+        }
+
+        .result-item {
+            text-align: left;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .result-item-capacite{
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50%;
+            margin: 0;
+        }
+
+        .result-label {
+            font-weight: bold;
+        }
+
+        .result-container:nth-child(2) {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <img src="/static/logo-onda.png" alt="logo" class="logoonda">
+    <h1 class="page-title">Résultats de simulation</h1>
+    <div class="capacite-container">
+        <div class="result-container-capacite">
+            <h1 class="result-title-capacite">Capacité</h1>
+            <div class="result-item-capacite">
+
+                 <span style="display: flex; justify-content: center; align-items: center;">{{ capacity|round(2) }} passagers/heure</span>
+            </div>
+        </div>
+    </div>
+    <div class="result-container">
+        <h1 class="result-title">Premier Passager PAF</h1>
+        <div class="result-item">
+            <span class="result-label">Temps d'attente :</span>
+            <span>{{ waiting_time|default('N/A')|round(2) }} minutes</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Temps de traitement :</span>
+            <span>{{ processing_time|round(2) }} minutes</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Temps total (attente + traitement) du passager :</span>
+            <span>{{ total_time|round(2) }} minutes</span>
+        </div>
+    </div>
+    <div class="result-container">
+        <h1 class="result-title">Durée Moyenne PAF</h1>
+        <div class="result-item">
+            <span class="result-label">Temps moyen d'attente :</span>
+            <span>{{ passenger_middle_waiting_time|default('N/A')|round(2) }} minutes</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Temps moyen de traitement :</span>
+            <span>{{ processing_time|round(2) }} minutes</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Temps moyen total (attente + traitement) du passager :</span>
+            <span>{{ total_time_middle_passenger|default('N/A')|round(2) }} minutes</span>
+        </div>
+    </div>
+    <div class="result-container">
+        <h1 class="result-title">Dernier Passager PAF</h1>
+        <div class="result-item">
+            <span class="result-label">Temps d'attente :</span>
+            <span>{{ last_passenger_waiting_time|default('N/A')|round(2) }} minutes</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Temps de traitement :</span>
+            <span>{{ processing_time|round(2) }} minutes</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Temps total (attente + traitement) du passager :</span>
+            <span>{{ total_time_last_passenger|default('N/A')|round(2) }} minutes</span>
+        </div>
+    </div>
+    <div class="result-container">
+        <h1 class="result-title">Position choisie PAF</h1>
+        <div class="result-item">
+            <span class="result-label">Temps d'attente :</span>
+            <span>{{ passenger_chosenposition_waiting_time|default('N/A')|round(2) }} minutes</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Temps de traitement :</span>
+            <span>{{ processing_time|round(2) }} minutes</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">Temps total (attente + traitement) du passager :</span>
+            <span>{{ passenger_chosenposition_total_time|default('N/A')|round(2) }} minutes</span>
+        </div>
+    </div>
+</body>
+</html>
