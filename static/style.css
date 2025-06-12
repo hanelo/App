@@ -1,1 +1,167 @@
 
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+}
+.container-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* full screen height */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    width: 500px;
+    background-color: #00588b;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+        .logoonda {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 9999;
+            display: block;
+            max-width: 190px;
+            height: auto;
+        }
+
+
+
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background: #ecf0f3;
+
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+     text-align: left;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    background: #ecf0f3;
+    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+button {
+    background-color:  #00588b;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    font-weight: 900;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+}
+
+button:hover {
+    background-color: #00588b;
+    align-items: center;
+}
+
+.error {
+    color: red;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+
+
+.result-container {
+    padding: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+}
+
+.result-container h2 {
+    margin-bottom: 10px;
+}
+
+.result-container p {
+    margin: 5px;
+}
+
+.result-container p:first-child {
+    margin-top: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+.result-container p:last-child {
+    margin-bottom: 10px;
+}
+
+.tableau-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set the container to cover the full viewport height */
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+    max-width: 800px; /* Set a maximum width for the table */
+    margin: 0 auto; /* Center the table horizontally */
+}
+
+
+
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+/* Optional: Add a border to the table */
+table {
+    border: 1px solid #140a2c;
+}
