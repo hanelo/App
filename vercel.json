@@ -1,4 +1,4 @@
-```json
+
 {
   "version": 2,
   "builds": [
@@ -8,4 +8,4 @@
     { "src": "/(.*)", "dest": "api/index.py" }
   ]
 }
-```
+
